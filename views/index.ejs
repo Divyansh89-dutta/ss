@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+  <form action="/" method="get">
+    <input type="text" placeholder="write a message">
+    <button type="submit">send</button>
+  </form>
+    <script src="/socket.io/socket.io.js"></script>
+<script>
+  const socket = io();
+  document.querySelector('button').addEventListener('click',()=>{
+    const message = document.querySelector('input').value
+    socket.emit('message',message)
+  })
+  socket.on('msg',message =>{
+    console.log(message)
+  })
+
+</script>
+</body>
+</html>
